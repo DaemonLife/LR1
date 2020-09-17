@@ -1,4 +1,5 @@
-# Написать программный код, реализующий простой шифр. (Цезарь, Скитала, Полибий)
+# Написать программный код, реализующий простой шифр. 
+# (Цезарь, Скитала, Полибий)
 
 import string
 
@@ -39,13 +40,14 @@ def caesar_dec():
 	print('\nYour result is ' + result)
 
 def scytale_enc():
-	abc = (string.ascii_lowercase)
-	#word = input('Enter your word: ')
-	word = 'hello_world'
-	print('word len =', len(word))
+	word = input('Enter your word: ')
 	word = word.lower()
 	n = 4
 	m = 3
+	inp = input('Enter num of <n> and <m> with space: ')
+	n = int(inp[:-1]) # столбцы 
+	m = int(inp[1:]) # строки 
+
 	result = [[ None for i in range(n)] for j in range(m)]
 	k = 0
 
@@ -71,18 +73,34 @@ def scytale_enc():
 	print('Your result is: ')
 	print(last_result)
 	
-
-
 def scytale_dec():
-    pass
-	# https://ru.wikipedia.org/wiki/%D0%A1%D0%BA%D0%B8%D1%82%D0%B0%D0%BB%D0%B0
+	word = input('Enter your encrypted word: ')
+	inp = input('Enter num of <n> and <m> with space: ')
+	n = int(inp[:-1]) # столбцы 
+	m = int(inp[1:]) # строки 
+	del inp
 
+	k = 0
+	result = [[ None for i in range(n)] for j in range(m)]
+	for j in range(n):
+		for i in range(m):
+			result[i][j] = word[k]
+			k += 1
+
+	for line in result:
+		print(line)
+
+def polybius_enc():
+	pass
+
+def polybius_dec():
+	pass
 
 def main():
 	print('Choose method')
-	print('1: Caesar encrypting\n2: Caesar decryption\n3: Scytale encrypting\n4: Scytale decrypting')
+	print('1: Caesar encrypting\n2: Caesar decryption\n3: Scytale encrypting\n4: Scytale decrypting\n5: Polybius encrypting\n6: Polybius decrypting\n')
 	#variant = int(input(''))
-	variant = 3
+	variant = 5
 	if variant == 1:
 		caesar_enc()
 	elif variant == 2:
@@ -91,6 +109,13 @@ def main():
 		scytale_enc()
 	elif variant == 4:
 		scytale_dec()
+	elif variant == 5:
+		polybius_enc()
+	elif variant == 6:
+		polybius_dec()
+	
+
+
 	
 if __name__ == '__main__':
 	main()
