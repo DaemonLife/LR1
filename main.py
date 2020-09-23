@@ -113,11 +113,18 @@ def polybius_enc():
 	id_list = [[ None for i in range(len(msg))] for j in range(2)]
 
 	for j in range(len(msg)):
-		print(msg[j])
-		print(finder(abc, msg[j]) )
 		id_list[0][j], id_list[1][j] = finder(abc, msg[j]) 
 	
-	print(id_list)
+	result = ''
+	for i in range(2):
+		l = 0
+		line = id_list[i]
+		while l < (len(line) - 1):
+			result += abc[id_list[i][l+1]][id_list[i][l]]
+			l += 2
+	
+	print(result)
+	
 	
 	#msg = input('Enter your word: ')
 		
