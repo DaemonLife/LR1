@@ -92,11 +92,11 @@ def scytale_dec():
 
 def polybius_enc():
 
-	def finder(arr, element):
-		for i in range(5):
+	def finder(arr, element, N = 5):
+		for i in range(N):
 			try:
 				j = abc[i].index(element)
-				return i, j
+				return j, i
 			except:
 				pass	
 
@@ -107,11 +107,21 @@ def polybius_enc():
 		['q','r','s','t','u'],
 		['v','w','x','y','z'],
 					]
-	msg = 'hello'
-	print(finder(abc, 'h'))
+					
+	msg = 'sometext'
+	
+	id_list = [[ None for i in range(len(msg))] for j in range(2)]
+
+	for j in range(len(msg)):
+		print(msg[j])
+		print(finder(abc, msg[j]) )
+		id_list[0][j], id_list[1][j] = finder(abc, msg[j]) 
+	
+	print(id_list)
+	
 	#msg = input('Enter your word: ')
 		
-
+	
 
 def polybius_dec():
 	pass
