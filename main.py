@@ -109,6 +109,7 @@ def polybius_enc():
 					]
 					
 	msg = 'sometext'
+	msg = input('Enter your word: ')
 	
 	id_list = [[ None for i in range(len(msg))] for j in range(2)]
 
@@ -123,11 +124,8 @@ def polybius_enc():
 			result += abc[id_list[i][l+1]][id_list[i][l]]
 			l += 2
 	
-	print(result)
+	print('Your result is', result)
 	
-	
-	#msg = input('Enter your word: ')
-		
 	
 
 def polybius_dec():
@@ -136,8 +134,8 @@ def polybius_dec():
 def main():
 	print('Choose method')
 	print('1: Caesar encrypting\n2: Caesar decryption\n3: Scytale encrypting\n4: Scytale decrypting\n5: Polybius encrypting\n6: Polybius decrypting\n')
-	#variant = int(input(''))
 	variant = 5
+	variant = int(input(''))
 	if variant == 1:
 		caesar_enc()
 	elif variant == 2:
@@ -151,7 +149,6 @@ def main():
 	elif variant == 6:
 		polybius_dec()
 	
-
 
 	
 if __name__ == '__main__':
