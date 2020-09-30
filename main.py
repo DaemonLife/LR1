@@ -93,6 +93,7 @@ def scytale_dec():
 def polybius_enc():
 
 	def finder(arr, element, N = 5):
+	# N is edge of abc matrix
 		for i in range(N):
 			try:
 				j = abc[i].index(element)
@@ -129,13 +130,63 @@ def polybius_enc():
 	
 
 def polybius_dec():
-	pass
-
+		
+	def finder(arr, element, N = 5):
+	# N is edge of abc matrix
+		for i in range(N):
+			try:
+				j = abc[i].index(element)
+				return j, i
+			except:
+				pass
+				
+	abc = [
+		['a','b','c','d','e'], 
+	        ['f','g','h','i','k'],
+		['l','m','n','o','p'],
+		['q','r','s','t','u'],
+		['v','w','x','y','z'],
+					]
+	msg = 'SWYSOCDU'
+	#msg = input('Enter your word: ')
+	msg = msg.lower()
+	
+	temp_id_list = [[ None for i in range(len(msg))] for j in range(2)]
+	result_id_list = [[ None for i in range(len(msg))] for j in range(2)]
+	
+	for j in range(len(msg)):
+		temp_id_list[0][j], temp_id_list[1][j] = finder(abc, msg[j]) 
+	
+	print(temp_id_list)
+	
+	result = ''
+	l = 0
+	while l < (len(msg)):
+		result += str(temp_id_list[0][l])
+		result += str(temp_id_list[1][l])
+		l += 1
+		if l == (len(msg)/2):
+			result += ' '
+	
+	print('Your result is', result)
+	
+	
+	i = 0
+	j = 0
+	for l in result:
+		if l == ' ':
+			i = 1
+			j = 0
+			continue
+		result_id_list[i][j] = int(l)
+		j += 1
+	print(result_id_list)
+	
 def main():
 	print('Choose method')
 	print('1: Caesar encrypting\n2: Caesar decryption\n3: Scytale encrypting\n4: Scytale decrypting\n5: Polybius encrypting\n6: Polybius decrypting\n')
-	variant = 5
-	variant = int(input(''))
+	variant = 6
+	#variant = int(input(''))
 	if variant == 1:
 		caesar_enc()
 	elif variant == 2:
